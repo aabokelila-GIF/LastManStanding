@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Laser: {fileID: 4339000164366180199, guid: 6c57eb1aebbb1424686cf4eeb5c4a612, type: 3}
+  Triple_Laser: {fileID: 946074069397400555, guid: e8fb004a554ff294291baa669d030da1,
+    type: 3}
   Speed: 5
   Lives: 1
   _SpawnManager_2D: {fileID: 1755240412}

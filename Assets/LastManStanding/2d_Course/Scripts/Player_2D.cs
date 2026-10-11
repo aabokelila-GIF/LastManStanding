@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class Player_2D : MonoBehaviour
 {
+    [Header("Laser")]
     [SerializeField] GameObject Laser;
+    [SerializeField] GameObject Triple_Laser;
+
     [SerializeField] float Speed= 5F;
     [SerializeField] int Lives = 1;
     private float FireRate = 0.15f;
     private float NextFire = 0f;
     [SerializeField] private SpawnManager_2D _SpawnManager_2D;
-
+    private bool isTriple_ShotActive ; 
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +35,16 @@ public class Player_2D : MonoBehaviour
     {
        
             NextFire = Time.time + FireRate;
+       
+           // Instantiate(Laser, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        if (isTriple_ShotActive)
+        {
+            Instantiate(Triple_Laser, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+        else
+        {
             Instantiate(Laser, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-        
+        }
     }
   
 
@@ -83,5 +94,17 @@ public class Player_2D : MonoBehaviour
         }
 
 
+    }
+
+    public void TripleShotActive()
+    {
+        isTriple_ShotActive = true;
+        StartCoroutine(SetTripleShotActive());
+    }
+
+    IEnumerator SetTripleShotActive()
+    {
+        yield return new WaitForSeconds(5);
+        isTriple_ShotActive = false;
     }
 }
