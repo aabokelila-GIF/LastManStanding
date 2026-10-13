@@ -9,12 +9,15 @@ public class SpawnManager_2D : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject Enemy_Prefab;
+    [SerializeField] GameObject [] PowerUps ;
 
     [SerializeField] GameObject EnemyConatier;
     private bool StopSpawning = false;
     void Start()
     {
-        StartCoroutine(EnemyPrefabQ(5));
+        StartCoroutine(SpawnEnemyPrefabQ(5));
+        StartCoroutine(SpawnTripleShot_PowerUp(7));
+
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class SpawnManager_2D : MonoBehaviour
         
     }
 
-    private IEnumerator EnemyPrefabQ(float Time_Instaniate)
+    private IEnumerator SpawnEnemyPrefabQ(float Time_Instaniate)
     {
         while (StopSpawning == false)
         {
@@ -38,6 +41,17 @@ public class SpawnManager_2D : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator SpawnTripleShot_PowerUp(float Time_Instaniate)
+    {
+        while (StopSpawning == false)
+        {
+            Vector3 PowerUp_Position = new Vector3(UnityEngine.Random.Range(-7, 7), 6, 0);
+            int RandomPowreups = UnityEngine.Random.Range(0, 2);
+            yield return new WaitForSeconds(Time_Instaniate);
+            Instantiate(PowerUps[RandomPowreups],PowerUp_Position,Quaternion.identity);
+        }
     }
 
     public void PlayerDeath()

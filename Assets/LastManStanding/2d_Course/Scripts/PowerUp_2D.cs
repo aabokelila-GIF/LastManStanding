@@ -6,6 +6,8 @@ public class PowerUp_2D : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float Speed = 3f;
+    [SerializeField] int PowerUpID;
+
     void Start()
     {
         
@@ -19,6 +21,7 @@ public class PowerUp_2D : MonoBehaviour
         if (transform.position.y < -7)
         {
             Destroy(gameObject);
+          
         }
     }
 
@@ -32,7 +35,19 @@ public class PowerUp_2D : MonoBehaviour
 
             if (Player != null)
             {
-                Player.TripleShotActive();
+                switch(PowerUpID)
+                {
+                        case 0: Player.TripleShotActive();
+                        break;
+                        case 1: Player.SpeedPowerUp();                
+                        break;
+                        case 2: Debug.Log("Sheild");
+                        break;
+                    default: Debug.Log("Deafult Value");
+                        break;
+                }
+
+               
             }
             Destroy(gameObject);
         }

@@ -10,6 +10,8 @@ public class Player_2D : MonoBehaviour
     [SerializeField] GameObject Triple_Laser;
 
     [SerializeField] float Speed= 5F;
+    private float SpeedMultplayer = 2F;
+
     [SerializeField] int Lives = 1;
     private float FireRate = 0.15f;
     private float NextFire = 0f;
@@ -101,10 +103,24 @@ public class Player_2D : MonoBehaviour
         isTriple_ShotActive = true;
         StartCoroutine(SetTripleShotActive());
     }
-
-    IEnumerator SetTripleShotActive()
+    public void SpeedPowerUp()
+    {
+        StartCoroutine(SetPlayerSpeed());
+    }
+      IEnumerator SetTripleShotActive()
     {
         yield return new WaitForSeconds(5);
         isTriple_ShotActive = false;
+    }
+
+
+
+
+     IEnumerator SetPlayerSpeed()
+    {
+        Speed *= SpeedMultplayer;
+
+        yield return new WaitForSeconds(5);
+        Speed /= SpeedMultplayer;
     }
 }
