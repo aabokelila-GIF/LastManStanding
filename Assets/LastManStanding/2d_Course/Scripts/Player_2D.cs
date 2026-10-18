@@ -11,12 +11,16 @@ public class Player_2D : MonoBehaviour
 
     [SerializeField] float Speed= 5F;
     private float SpeedMultplayer = 2F;
-
+    [Header("Health")]
+    [SerializeField] GameObject Shield_Visualizer;
     [SerializeField] int Lives = 1;
     private float FireRate = 0.15f;
     private float NextFire = 0f;
     [SerializeField] private SpawnManager_2D _SpawnManager_2D;
-    private bool isTriple_ShotActive ; 
+    private bool isTriple_ShotActive = false;
+
+    private bool isShield_Active = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,9 +92,18 @@ public class Player_2D : MonoBehaviour
 
     public void Damage()
     {
+        if (isShield_Active)
+        {
+            Debug.Log("Shield");
+            isShield_Active = false;
+            Shield_Visualizer.SetActive(false);
+
+            return;
+        }
         Lives--;
         if (Lives == 0)
         {
+
             Destroy(this.gameObject);
             _SpawnManager_2D.PlayerDeath();
         }
@@ -102,6 +115,13 @@ public class Player_2D : MonoBehaviour
     {
         isTriple_ShotActive = true;
         StartCoroutine(SetTripleShotActive());
+    }
+
+    public void ShieldActive()
+    {
+        isShield_Active = true;
+        Shield_Visualizer.SetActive(true);
+
     }
     public void SpeedPowerUp()
     {

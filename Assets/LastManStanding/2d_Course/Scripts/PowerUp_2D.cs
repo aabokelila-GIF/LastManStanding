@@ -41,7 +41,7 @@ public class PowerUp_2D : MonoBehaviour
                         break;
                         case 1: Player.SpeedPowerUp();                
                         break;
-                        case 2: Debug.Log("Sheild");
+                        case 2: Player.ShieldActive();
                         break;
                     default: Debug.Log("Deafult Value");
                         break;
