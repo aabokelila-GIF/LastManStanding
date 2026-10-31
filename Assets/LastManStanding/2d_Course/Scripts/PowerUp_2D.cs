@@ -52,4 +52,6 @@ public class PowerUp_2D : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+  
 }

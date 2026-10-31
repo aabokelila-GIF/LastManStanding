@@ -7,12 +7,12 @@ public class Enemy_2D : MonoBehaviour
 {
    
     [SerializeField] float Speed = 1f;
-   // [SerializeField] GameObject Laser;
+    // [SerializeField] GameObject Laser;
 
-    
+    private Player_2D player;
     void Start()
     {
-      
+      player =  GameObject.Find("Player").GetComponent<Player_2D>();
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class Enemy_2D : MonoBehaviour
 
         if (other.gameObject.CompareTag("Laser"))
         {
+            player.AddSocre(10);
            Destroy(other.gameObject);
             Destroy(this.gameObject);
         }

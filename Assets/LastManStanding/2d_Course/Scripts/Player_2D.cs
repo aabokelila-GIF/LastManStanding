@@ -13,18 +13,22 @@ public class Player_2D : MonoBehaviour
     private float SpeedMultplayer = 2F;
     [Header("Health")]
     [SerializeField] GameObject Shield_Visualizer;
-    [SerializeField] int Lives = 1;
+    [SerializeField] int Lives = 3;
     private float FireRate = 0.15f;
     private float NextFire = 0f;
     [SerializeField] private SpawnManager_2D _SpawnManager_2D;
+    [SerializeField] private UI_ManagerScript UiManager;
+
     private bool isTriple_ShotActive = false;
 
     private bool isShield_Active = false;
 
+    private int Score = 0;
     // Start is called before the first frame update
     void Start()
     {
         _SpawnManager_2D = GameObject.Find("spawnManager").GetComponent<SpawnManager_2D>();
+         UiManager = GameObject.Find("Canvas").GetComponent<UI_ManagerScript>();
     }
 
     // Update is called once per frame
@@ -101,6 +105,7 @@ public class Player_2D : MonoBehaviour
             return;
         }
         Lives--;
+        UiManager.UpdateLives(Lives);
         if (Lives == 0)
         {
 
@@ -133,7 +138,11 @@ public class Player_2D : MonoBehaviour
         isTriple_ShotActive = false;
     }
 
-
+    public void AddSocre(int Points)
+    {
+        Score += Points;
+        UiManager.UpdateScore(Score);
+    }
 
 
      IEnumerator SetPlayerSpeed()
