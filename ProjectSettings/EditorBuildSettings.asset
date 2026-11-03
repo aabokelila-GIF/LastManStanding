@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Main Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/LastManStanding/2d_Course/Scene/MainMenu.unity
+    guid: 108e88f9290faa941b2cc1ac9a545d75
   - enabled: 1
     path: Assets/LastManStanding/2d_Course/Scene/2DScene.unity
     guid: 294c0cc6d47e4c048ae69dca90d5e688
