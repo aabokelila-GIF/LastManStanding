@@ -8,6 +8,9 @@ public class Player_2D : MonoBehaviour
     [Header("Laser")]
     [SerializeField] GameObject Laser;
     [SerializeField] GameObject Triple_Laser;
+    [Header("Engine")]
+    [SerializeField] GameObject[] Engines ;
+
 
     [SerializeField] float Speed= 5F;
     private float SpeedMultplayer = 2F;
@@ -106,6 +109,15 @@ public class Player_2D : MonoBehaviour
         }
         Lives--;
         UiManager.UpdateLives(Lives);
+
+        if (Lives == 2)
+        {
+            Engines[0].SetActive(true);
+        }
+        if (Lives == 1)
+        {
+            Engines[1].SetActive(true);
+        }
         if (Lives == 0)
         {
 

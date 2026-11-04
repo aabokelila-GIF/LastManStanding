@@ -7,11 +7,11 @@ public class Asteroid_2D : MonoBehaviour
     [SerializeField] float rotate_Speed = 0f;
 
     [SerializeField] GameObject exlposion_Effect;
-
+    [SerializeField] SpawnManager_2D SpawnManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SpawnManager = GameObject.Find("spawnManager").GetComponent<SpawnManager_2D>();
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class Asteroid_2D : MonoBehaviour
         if (collision.tag == "Laser")
         {
             Instantiate(exlposion_Effect,transform.position,Quaternion.identity);
+
+            SpawnManager.StartSpawning();
             Destroy(collision.gameObject);
             Destroy(this.gameObject,0.15f);
 

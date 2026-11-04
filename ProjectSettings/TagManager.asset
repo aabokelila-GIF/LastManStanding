@@ -8,11 +8,12 @@ TagManager:
   - Hexagon
   - Enemy
   - Laser
+  - PowerUp
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProcessing
   - Water
   - UI
   - 

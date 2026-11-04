@@ -15,11 +15,14 @@ public class SpawnManager_2D : MonoBehaviour
     private bool StopSpawning = false;
     void Start()
     {
-        StartCoroutine(SpawnEnemyPrefabQ(5));
-        StartCoroutine(SpawnTripleShot_PowerUp(7));
+     
 
     }
-
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnEnemyPrefabQ(5));
+        StartCoroutine(SpawnTripleShot_PowerUp(7));
+    }
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +31,8 @@ public class SpawnManager_2D : MonoBehaviour
 
     private IEnumerator SpawnEnemyPrefabQ(float Time_Instaniate)
     {
+        yield return new WaitForSeconds(2f);
+
         while (StopSpawning == false)
         {
             yield return new WaitForSeconds(0.2f);
@@ -45,6 +50,8 @@ public class SpawnManager_2D : MonoBehaviour
 
     IEnumerator SpawnTripleShot_PowerUp(float Time_Instaniate)
     {
+        yield return new WaitForSeconds(2f);
+
         while (StopSpawning == false)
         {
             Vector3 PowerUp_Position = new Vector3(UnityEngine.Random.Range(-7, 7), 6, 0);
