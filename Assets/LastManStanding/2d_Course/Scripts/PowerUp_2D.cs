@@ -7,10 +7,11 @@ public class PowerUp_2D : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float Speed = 3f;
     [SerializeField] int PowerUpID;
-
+    [SerializeField] AudioClip PowerUp_Sound;
+    [SerializeField] AudioSource m_audioSource;
     void Start()
     {
-        
+        m_audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +50,7 @@ public class PowerUp_2D : MonoBehaviour
 
                
             }
+            AudioSource.PlayClipAtPoint(PowerUp_Sound,transform.position);
             Destroy(gameObject);
         }
     }

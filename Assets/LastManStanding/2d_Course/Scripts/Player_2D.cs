@@ -27,11 +27,15 @@ public class Player_2D : MonoBehaviour
     private bool isShield_Active = false;
 
     private int Score = 0;
+
+    [SerializeField] AudioClip Laser_Sound;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         _SpawnManager_2D = GameObject.Find("spawnManager").GetComponent<SpawnManager_2D>();
          UiManager = GameObject.Find("Canvas").GetComponent<UI_ManagerScript>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,6 +62,7 @@ public class Player_2D : MonoBehaviour
         {
             Instantiate(Laser, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
+        audioSource.PlayOneShot(Laser_Sound);
     }
   
 
